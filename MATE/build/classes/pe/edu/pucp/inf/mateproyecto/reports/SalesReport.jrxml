@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a3511d2a-2f5a-4948-8423-7f401addc0d0">
+	<property name="ireport.zoom" value="1.1"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="InitialDate" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="FinalDate" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     Creationdate,
+     Serialcode,
+     Totalsale 
+
+FROM
+     SALE
+WHERE
+     Creationdate >= $P{InitialDate} AND Creationdate <= $P{FinalDate}]]>
+	</queryString>
+	<field name="Creationdate" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Serialcode" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Totalsale" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="total" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{Totalsale}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<image>
+				<reportElement x="-19" y="0" width="595" height="70" uuid="69ab7be7-e851-42b0-ace1-e020d994b14c"/>
+				<imageExpression><![CDATA["wood.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="0" y="5" width="263" height="33" uuid="00673525-3da7-4f7a-869d-9352003d2412"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[MATE S.A.C]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="63" y="39" width="304" height="22" forecolor="#FFFFFF" uuid="2164a8aa-d92e-478d-80bb-a1e72986ec0e"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[INGRESOS POR VENTAS]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="80" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="e7feafad-0149-4122-b58c-43cb489b367e"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="19" width="111" height="15" uuid="26a1cecf-fc59-4f21-9114-f04b01af9c5d"/>
+				<text><![CDATA[Creationdate]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="218" y="21" width="111" height="15" uuid="b197974f-3d93-4366-90d5-063fcb765985"/>
+				<text><![CDATA[Serialcode]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="377" y="21" width="111" height="15" uuid="e5d61dcf-611e-4d51-9c4a-9ba4a2a82922"/>
+				<text><![CDATA[Totalsale]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="27" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="2" width="100" height="20" uuid="7fcf42ef-57e2-45c4-8ef8-a5fbaa208c28"/>
+				<textFieldExpression><![CDATA[$F{Creationdate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="218" y="2" width="100" height="20" uuid="3d00a029-b775-43de-a63b-5790e329ab1f"/>
+				<textFieldExpression><![CDATA[$F{Serialcode}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="377" y="2" width="100" height="20" uuid="09ca4586-5015-4b75-8241-6f018299ca6d"/>
+				<textFieldExpression><![CDATA[$F{Totalsale}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="85853937-d05a-4466-a2c9-dfd8c73f622b"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="100" splitType="Stretch">
+			<staticText>
+				<reportElement x="218" y="15" width="101" height="20" uuid="4359d4ad-d7f4-4c5c-82b6-b745fcee8285"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ingresos Total:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="377" y="15" width="100" height="20" uuid="68559d01-46b4-4aa4-9a70-acf543bfa4da"/>
+				<textElement>
+					<paragraph tabStopWidth="20"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

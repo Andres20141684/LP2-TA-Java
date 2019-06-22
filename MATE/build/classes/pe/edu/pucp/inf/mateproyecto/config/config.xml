@@ -1,0 +1,5 @@
+<pe.edu.pucp.inf.mateproyecto.config.ConnectionParameters>
+    <url>jdbc:mysql://quilla.lab.inf.pucp.edu.pe:3306/inf282g6</url>
+    <user>inf282g6</user>
+    <password>d0PHn0</password>
+</pe.edu.pucp.inf.mateproyecto.config.ConnectionParameters>
